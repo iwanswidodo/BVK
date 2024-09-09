@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="BVK Normal Flow" thread-count="1" parallel="tests"
+       data-provider-thread-count="1" group-by-instances="true">
+    <listeners>
+        <listener class-name="BVK.GlobalMethod.Listener.BVKListener"></listener>
+    </listeners>
+
+    <test name="Login for create token ">
+        <classes>
+            <class name="BVK.API.Test.PositiveTest.Auth.TestLogin"></class>
+        </classes>
+    </test>
+
+
+
+
+</suite>
+
+
+
+
+

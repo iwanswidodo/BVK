@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.2.1</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+	<groupId>com.example</groupId>
+	<artifactId>TestBVK</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>BVK Automation Framework</name>
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+		<repository>
+			<id>google</id>
+			<name>google-repository</name>
+			<url>https://dl.google.com/android/maven2</url>
+		</repository>
+		<repository>
+			<id>AsposeJavaAPI</id>
+			<name>Aspose Java API</name>
+			<url>https://repository.aspose.com/repo/</url>
+		</repository>
+	</repositories>
+	<properties>
+		<java.version>17</java.version>
+		<testng.version>7.9.0</testng.version>
+		<selenium.version>4.17.0</selenium.version>
+		<appium.version>9.0.0</appium.version>
+		<apachepoi.version>5.0.0</apachepoi.version>
+		<log4j.version>1.2.17</log4j.version>
+		<allure.version>2.21.0</allure.version>
+		<ashot.version>1.5.4</ashot.version>
+		<maven.surefire.version>2.19.1</maven.surefire.version>
+		<maven.compiler.plugin.version>3.10.1</maven.compiler.plugin.version>
+		<suiteXmlFile>testng.xml</suiteXmlFile>
+		<aspectj.version>1.9.21</aspectj.version>
+		<jvm_xms>256</jvm_xms>
+		<jvm_xmx>756</jvm_xmx>
+		<healenium.version>3.4.8</healenium.version>
+	</properties>
+	<dependencies>
+
+		<!-- https://mvnrepository.com/artifact/org.hamcrest/hamcrest-core -->
+		<dependency>
+			<groupId>org.hamcrest</groupId>
+			<artifactId>hamcrest-core</artifactId>
+			<version>2.2</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.victools</groupId>
+			<artifactId>jsonschema-generator</artifactId>
+			<version>4.35.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.epam.healenium</groupId>
+			<artifactId>healenium-web</artifactId>
+			<version>${healenium.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.xmlrpc/xmlrpc-client -->
+		<dependency>
+			<groupId>org.apache.xmlrpc</groupId>
+			<artifactId>xmlrpc-client</artifactId>
+			<version>3.1.3</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+		<dependency>
+			<groupId>com.google.api-client</groupId>
+			<artifactId>google-api-client</artifactId>
+			<version>1.30.10</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.oauth-client/google-oauth-client-jetty -->
+		<dependency>
+			<groupId>com.google.oauth-client</groupId>
+			<artifactId>google-oauth-client-jetty</artifactId>
+			<version>1.34.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-drive -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-drive</artifactId>
+			<version>v3-rev197-1.25.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-sheets -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-sheets</artifactId>
+			<version>v4-rev614-1.18.0-rc</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.google.apis/google-api-services-gmail -->
+		<dependency>
+			<groupId>com.google.apis</groupId>
+			<artifactId>google-api-services-gmail</artifactId>
+			<version>v1-rev110-1.25.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.datafaker</groupId>
+			<artifactId>datafaker</artifactId>
+			<version>2.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- TestNG Dependency -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
+		</dependency>
+
+
+		<!-- Selenium SelfHealingDriver Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+
+		<!-- Selenium Webdriver-Firefox Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-firefox-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+
+		<!-- Selenium Webdriver-Chrome Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+
+		<!-- Selenium Webdriver-Edge Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-edge-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.appium/java-client -->
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>${appium.version}</version>
+		</dependency>
+
+		<!-- Selenium Webdriver-Internet Explorer Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-ie-driver</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+
+		<!-- Selenium Support Dependency -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<version>${selenium.version}</version>
+		</dependency>
+
+<!--		&lt;!&ndash; SelfHealingDriver Manager Dependency &ndash;&gt;-->
+<!--		<dependency>-->
+<!--			<groupId>io.github.bonigarcia</groupId>-->
+<!--			<artifactId>webdrivermanager</artifactId>-->
+<!--			<version>${webdrivermanager.version}</version>-->
+<!--			<exclusions>-->
+<!--				<exclusion>-->
+<!--					<groupId>com.google.guava</groupId>-->
+<!--					<artifactId>guava</artifactId>-->
+<!--				</exclusion>-->
+<!--			</exclusions>-->
+<!--		</dependency>-->
+
+		<dependency>
+			<groupId>org.apache.httpcomponents.client5</groupId>
+			<artifactId>httpclient5</artifactId>
+			<version>5.2.1</version>
+<!--			<scope>test</scope>-->
+		</dependency>
+
+		<!-- Apache POI Dependancy -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>${apachepoi.version}</version>
+		</dependency>
+
+		<!-- Apache POI-OOXML Dependancy -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>${apachepoi.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
+		</dependency>
+
+		<!-- Allure Attachment Adapter -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-attachments</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-rest-assured -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-rest-assured</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-spring-web -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-spring-web</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+		</dependency>
+
+		<!-- Allure TestNG Adapter -->
+		<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>${allure.version}</version>
+		</dependency>
+
+		<!-- Selenium ShutterBag Dependency to capture Images -->
+		<dependency>
+			<groupId>com.assertthat</groupId>
+			<artifactId>selenium-shutterbug</artifactId>
+			<version>1.6</version>
+		</dependency>
+
+		<!-- YANDEX QATools Properties Dependency -->
+		<dependency>
+			<groupId>ru.yandex.qatools.properties</groupId>
+			<artifactId>properties-loader</artifactId>
+			<version>1.5</version>
+		</dependency>
+
+
+		<!-- AShot Dependancy -->
+		<dependency>
+			<groupId>ru.yandex.qatools.ashot</groupId>
+			<artifactId>ashot</artifactId>
+			<version>${ashot.version}</version>
+		</dependency>
+
+		<!-- RestAssured Dependency -->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>rest-assured</artifactId>
+			<version>5.3.0</version>
+		</dependency>
+
+		<!--JSON Schema Validator Dependency-->
+		<dependency>
+			<groupId>io.rest-assured</groupId>
+			<artifactId>json-schema-validator</artifactId>
+			<version>5.2.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ws.schild</groupId>
+			<artifactId>jave-core</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ws.schild</groupId>
+			<artifactId>jave-all-deps</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.grpc/grpc-protobuf -->
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-protobuf</artifactId>
+			<version>1.53.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/io.grpc/grpc-auth -->
+		<dependency>
+			<groupId>io.grpc</groupId>
+			<artifactId>grpc-auth</artifactId>
+			<version>1.53.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.auth/google-auth-library-oauth2-http -->
+		<dependency>
+			<groupId>com.google.auth</groupId>
+			<artifactId>google-auth-library-oauth2-http</artifactId>
+			<version>1.16.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>31.0.1-jre</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>software.amazon.awssdk</groupId>
+			<artifactId>aws-sdk-java</artifactId>
+			<version>2.20.69</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.auth</groupId>
+			<artifactId>google-auth-library-credentials</artifactId>
+			<version>1.16.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.google.cloud/google-cloud-core -->
+		<dependency>
+			<groupId>com.google.cloud</groupId>
+			<artifactId>google-cloud-core</artifactId>
+			<version>2.19.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.firebase</groupId>
+			<artifactId>firebase-admin</artifactId>
+			<version>9.1.1</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.pojosontheweb/monte-repack -->
+		<dependency>
+			<groupId>com.pojosontheweb</groupId>
+			<artifactId>monte-repack</artifactId>
+			<version>1.1</version>
+		</dependency>
+
+
+			<dependency>
+				<groupId>org.apache.pdfbox</groupId>
+				<artifactId>pdfbox</artifactId>
+				<version>2.0.26</version> <!-- Use the version you need -->
+			</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.zeroturnaround/zt-zip -->
+		<dependency>
+			<groupId>org.zeroturnaround</groupId>
+			<artifactId>zt-zip</artifactId>
+			<version>1.15</version>
+		</dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+        </dependency>
+
+		<dependency>
+			<groupId>com.aspose</groupId>
+			<artifactId>aspose-barcode</artifactId>
+			<version>22.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+        <dependency>
+            <groupId>org.unitils.selenium</groupId>
+            <artifactId>unitils-selenium</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+			<!-- Apache Maven SureFire Plugin -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+				<configuration>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+					<argLine>
+						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+					</argLine>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+			<!-- This Plugin handles the copying of project resources to the output directory -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>3.3.0</version>
+				<executions>
+					<execution>
+						<id>copy-allure-environment</id>
+						<phase>test</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${basedir}/allure-results</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${basedir}/src/main/resources/</directory>
+									<includes>
+										<include>environment.properties</include>
+										<include>categories.json</include>
+									</includes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<!-- This Plugin creates a jar archive of the source files of the current project -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>3.2.1</version>
+			</plugin>
+
+			<!-- The Javadoc Plugin uses the Javadoc tool to generate javadocs for the specified project -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.3.0</version>
+			</plugin>
+
+			<!-- This plugin signs all of the project's attached artifacts with GnuPG -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>3.0.1</version>
+			</plugin>
+
+			<!-- This Plugin is used to compile the sources of your project -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.lazerycode.jmeter</groupId>
+				<artifactId>jmeter-maven-plugin</artifactId>
+				<version>3.7.0</version>
+				<executions>
+					<!-- Generate JMeter configuration -->
+					<execution>
+						<id>configuration</id>
+						<goals>
+							<goal>configure</goal>
+						</goals>
+					</execution>
+					<!-- Run JMeter tests -->
+					<execution>
+						<id>jmeter-tests</id>
+						<goals>
+							<goal>jmeter</goal>
+						</goals>
+					</execution>
+					<!-- Fail build on errors in test -->
+					<execution>
+						<id>jmeter-check-results</id>
+						<goals>
+							<goal>results</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<resultsFileFormat>xml</resultsFileFormat>
+<!--					<generateReports>true</generateReports>-->
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>io.github.vdaburon</groupId>
+				<artifactId>jmeter-graph-tool-maven-plugin</artifactId>
+				<version>1.2</version>
+				<configuration>
+					<!-- see Filter Results Tool in jmeter-plugins.org -->
+					<filterResultsTool>
+						<filterResultsParam>
+							<inputFile>${project.build.directory}/jmeter/results/20230503-test1.jtl</inputFile>
+							<outputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_regex_filtred.csv</outputFile>
+							<successFilter>false</successFilter>
+							<includeLabels>0.*</includeLabels>
+							<includeLabelRegex>true</includeLabelRegex>
+						</filterResultsParam>
+						<filterResultsParam>
+							<inputFile>${project.build.directory}/jmeter/results/20230503-test1.jtl</inputFile>
+							<outputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_offset_filtred.jtl</outputFile>
+							<successFilter>false</successFilter>
+							<startOffset>2</startOffset>
+							<endOffset>20</endOffset>
+							<saveAsXml>true</saveAsXml>
+						</filterResultsParam>
+					</filterResultsTool>
+					<graphs>
+						<!-- see JMeterPluginsCMD Command Line Tool in jmeter-plugins.org -->
+						<graph>
+							<pluginType>ResponseTimesOverTime</pluginType>
+							<inputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_offset_filtred.jtl</inputFile>
+							<generatePng>${project.build.directory}/jmeter/results/ResponseTimesOverTime.png</generatePng>
+							<width>800</width>
+							<height>600</height>
+							<limitRows>50</limitRows>
+							<relativeTimes>no</relativeTimes>
+							<paintGradient>no</paintGradient>
+							<startOffset>2</startOffset>
+							<endOffset>20</endOffset>
+							<includeLabels>0.*</includeLabels>
+							<includeLabelRegex>true</includeLabelRegex>
+							<forceY>1000</forceY>
+							<autoScale>no</autoScale>
+							<lineWeight>2</lineWeight>
+						</graph>
+						<graph>
+							<inputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_offset_filtred.jtl</inputFile>
+							<pluginType>TransactionsPerSecond</pluginType>
+							<width>800</width>
+							<height>600</height>
+							<generatePng>${project.build.directory}/jmeter/results/TransactionsPerSecond.png</generatePng>
+							<relativeTimes>no</relativeTimes>
+							<aggregateRows>yes</aggregateRows>
+							<paintGradient>no</paintGradient>
+						</graph>
+<!--						&lt;!&ndash; Page Data Extractor &ndash;&gt;-->
+<!--						<graph>-->
+<!--							<pluginType>PageDataExtractorOverTime</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/pde_httpd.jtl</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/pde_httpd_all_workers.png</generatePng>-->
+<!--							<extractorRegexps>(BusyWorkers|IdleWorkers):.*{;}[A-Za-z]+:.([0-9]+){;}false{;}true</extractorRegexps>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						<graph>-->
+<!--							<pluginType>PageDataExtractorOverTime</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/pde_httpd.jtl</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/pde_httpd_busy_workers.png</generatePng>-->
+<!--							<extractorRegexps>(BusyWorkers):.*{;}BusyWorkers:.([0-9]+){;}false{;}true</extractorRegexps>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						&lt;!&ndash; PerfMon &ndash;&gt;-->
+<!--						<graph>-->
+<!--							<pluginType>PerfMon</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/perfmon.csv</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/Perfmon_CPU.png</generatePng>-->
+<!--							<includeLabels>.*CPU.*</includeLabels>-->
+<!--							<includeLabelRegex>true</includeLabelRegex>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						<graph>-->
+<!--							<pluginType>PerfMon</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/perfmon.csv</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/Perfmon_Memory.png</generatePng>-->
+<!--							<includeLabels>.*Memory.*</includeLabels>-->
+<!--							<includeLabelRegex>true</includeLabelRegex>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						&lt;!&ndash; JMXMon &ndash;&gt;-->
+<!--						<graph>-->
+<!--							<pluginType>JMXMon</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/gest_jmx_tomcat.jtl</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/JMX_memory_jvm.png</generatePng>-->
+<!--							<includeLabels>used.HeapMemoryUsage.*</includeLabels>-->
+<!--							<includeLabelRegex>true</includeLabelRegex>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						<graph>-->
+<!--							<pluginType>JMXMon</pluginType>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/gest_jmx_tomcat.jtl</inputFile>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/JMX_currentThreadsBusy.png</generatePng>-->
+<!--							<includeLabels>.*currentThreadsBusy.*</includeLabels>-->
+<!--							<includeLabelRegex>true</includeLabelRegex>-->
+<!--							<width>1024</width>-->
+<!--							<height>800</height>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+<!--						&lt;!&ndash; Aggregate report csv &ndash;&gt;-->
+<!--						<graph>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_local_monit.csv</inputFile>-->
+<!--							<pluginType>AggregateReport</pluginType>-->
+<!--							<generateCsv>${project.build.directory}/jmeter/results/AggregateReport.csv</generateCsv>-->
+<!--						</graph>-->
+<!--						<graph>-->
+<!--							<inputFile>${project.build.directory}/jmeter/results/gestdoc_sc01_menu_local_monit.csv</inputFile>-->
+<!--							<pluginType>ResponseCodesPerSecond</pluginType>-->
+<!--							<width>800</width>-->
+<!--							<height>600</height>-->
+<!--							<generatePng>${project.build.directory}/jmeter/results/ResponseCodesPerSecond.png</generatePng>-->
+<!--							<relativeTimes>no</relativeTimes>-->
+<!--							<aggregateRows>no</aggregateRows>-->
+<!--							<paintGradient>no</paintGradient>-->
+<!--						</graph>-->
+					</graphs>
+					<!-- copy files from directoryTestFiles to MAVEN_PROJECT_DIRECTORY/target/jmeter/bin -->
+					<directoryTestFiles>${project.build.directory}/jmeter/testFiles</directoryTestFiles>
+					<!-- see jmeter-maven-pugins -->
+					<jMeterProcessJVMSettings>
+						<xms>${jvm_xms}</xms>
+						<xmx>${jvm_xmx}</xmx>
+						<arguments>
+							<argument>-Duser.language=en</argument>
+						</arguments>
+					</jMeterProcessJVMSettings>
+					<!-- merge this properties with user.properties file in MAVEN_PROJECT_DIRECTORY/target/jmeter/bin -->
+					<!-- property format = <property_name>property_value</property name> will be property_name=property_value in the user.properties file. E.g. language=en -->
+					<propertiesUser>
+						<language>en</language>
+					</propertiesUser>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

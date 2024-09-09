@@ -1,0 +1,6 @@
+
+
+ :: Spring Boot :: ${spring-boot.formatted-version}
+ :: Enviroment :: ${spring.profiles.active}
+ :: Devices :: ${device}
+ :: Screen Size :: ${device.size}
