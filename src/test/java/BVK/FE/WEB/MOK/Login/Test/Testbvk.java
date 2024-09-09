@@ -14,7 +14,7 @@ public class Testbvk extends WebBaseTestNG {
     public void TestLogin() {
      loginBVKObject.getUrl().getUrl();
     }
-    @Step("TC_Login_003-User is on the login page with invalid username and valid password.")
+    @Step("TC_Login_003 - User is on the login page with invalid username and valid password.")
     @Test
     public void TestLoginfailed() {
         loginBVKObject.getUrl1();
@@ -29,7 +29,10 @@ public class Testbvk extends WebBaseTestNG {
     public void PasswordMasking() throws InterruptedException {
         loginBVKObject.passwordmasking();
     }
-
-
-
+    @Step("TC_Login_004 - Login with invalid Credentials Password ")
+    @Test
+    public void TestLoginfailed1() throws InterruptedException {
+        loginBVKObject.invalidPass();
+    }
+    
 }

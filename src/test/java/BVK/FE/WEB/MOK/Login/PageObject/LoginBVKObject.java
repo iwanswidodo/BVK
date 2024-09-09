@@ -12,7 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.testng.Assert;
 
+import java.io.File;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import static com.aspose.barcode.internal.rrf.ww.By;
 
@@ -52,8 +54,8 @@ public class LoginBVKObject extends WebBaseMethod {
     private String getUrl1;
     @Value("${URL-Upload}")
     private String URLupload;
-    @Value("${URL-MissingElements}")
-    private String URLMissingELements;
+    @Value("${URL-TestInvalidPassword}")
+    private String getUrl2;
 
 
 
@@ -64,19 +66,27 @@ public class LoginBVKObject extends WebBaseMethod {
         Assert.assertEquals(txtcongrats.getText(),"Congratulations! You must have the proper credentials.");
         return this;
     }
-    @Step("TC_Login_001 - Successful Login with invalid Credentials ")
+    @Step("TC_Login_001 - Successful Login with invalid Credentials Username ")
     public LoginBVKObject getUrl1(){
         webDriver.get(getUrl1);
  //       Assert.assertEquals(txtcongrats.getText(),"Congratulations! You must have the proper credentials.");
         return this;
     }
-    @Step("TC_Login_001 - Successful Login with invalid Credentials ")
+    @Step("TC_FileUpload_001 - Upload a File Successfully")
     public LoginBVKObject uploadFile(){
         webDriver.get(getUrl);
         webDriver.get(URLupload);
-        sendKeys(fileupload,"/Users/iwan/Documents/QA-Automation/src/test/resources/asset/Android.png");
-        click(btnSubmit);
-        Assert.assertEquals(txtupload.getText(),"File Uploaded!");
+        try {
+            String filePath = new File("src/test/resources/asset/Asset1.png").getAbsolutePath();
+            sendKeys(fileupload,filePath);
+            click(btnSubmit);
+            Assert.assertEquals(txtupload.getText(),"File Uploaded!");
+        }catch (NoSuchElementException e){
+            System.out.println("Element Not Found");
+            Assert.fail("Element should not be present");
+        }
+
+
         return this;
     }
     @Step("TC_Login_005 - Password Field Masking")
@@ -87,10 +97,9 @@ public class LoginBVKObject extends WebBaseMethod {
         Thread.sleep(4000);
         return this;
     }
-    @Step("TC_Login_005 - MissingElements")
-    public LoginBVKObject MissingElements() throws InterruptedException {
-        webDriver.get(URLMissingELements);
-        fullPageScreenshot("verified password will be masked");
+    @Step("TC_Login_004 - Successful Login with invalid Credentials Password ")
+    public LoginBVKObject invalidPass() throws InterruptedException {
+       webDriver.get(getUrl2);
         return this;
     }
 
