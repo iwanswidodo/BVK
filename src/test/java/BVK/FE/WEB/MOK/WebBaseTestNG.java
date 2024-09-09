@@ -13,7 +13,7 @@ import static BVK.GlobalMethod.Utils.EnvironmentSetup.environmentSetup;
 
 @SpringBootTest
 @Listeners(BVKListener.class)
-public class WebBaseTestNG_MOK extends AbstractTestNGSpringContextTests {
+public class WebBaseTestNG extends AbstractTestNGSpringContextTests {
 
 //    @Autowired
 //    protected LoginMOKPageObject loginMOKPageObject;

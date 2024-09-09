@@ -12,7 +12,8 @@ _ _ _
         * [1.1.0 Installation:](#110-installation)
     * [1.2 How To Use](#12-how-to-use)
     * [1.3 Install Java](... )
-    * [1.4 Social Media]
+    * [1.4 Additional Note]
+    * [1.5 Social Media]
     *
 
 
@@ -69,6 +70,15 @@ Lalu Konfigurasi Project SDK:
 
 Instagram : https://www.instagram.com/iwansuryowidodo/
 Linkedin : https://www.linkedin.com/in/iwansuryowidodo/
+
+## 1.5 Additional Note
+
+Untuk Bonus test sudah termasuk di dalam test nya termasuk:
+
+1. Parallel Test Execution : ada pada -> src/main/java/BVK/FE/DriverFactory.java
+2. Advanced Assertions : ada pada -> src/main/java/BVK/GlobalMethod/Assertion/Assertions.java
+3. Cross-Browser Testing : ada di dalam -> BVKTest.xml
+
 
 
 

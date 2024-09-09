@@ -6,9 +6,10 @@
         <listener class-name="BVK.GlobalMethod.Listener.BVKListener"></listener>
     </listeners>
 
-    <test name="Login for create token ">
+    <test name="Test BVK ">
+        <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="BVK.API.Test.PositiveTest.Auth.TestLogin"></class>
+            <class name="BVK.FE.WEB.MOK.Login.Test.Testbvk"></class>
         </classes>
     </test>
 

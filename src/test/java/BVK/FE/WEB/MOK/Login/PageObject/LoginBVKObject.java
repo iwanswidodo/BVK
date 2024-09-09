@@ -83,7 +83,8 @@ public class LoginBVKObject extends WebBaseMethod {
     public LoginBVKObject passwordmasking() throws InterruptedException {
         webDriver.get(getUrl);
         Thread.sleep(4000);
-        fullPageScreenshot("verified password will be masked");
+        fullPageScreenshot("passwordmasked.png");
+        Thread.sleep(4000);
         return this;
     }
     @Step("TC_Login_005 - MissingElements")
